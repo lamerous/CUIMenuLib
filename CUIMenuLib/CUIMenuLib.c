@@ -17,17 +17,9 @@ void displayMenu(struct Menu menu){
 		}
 		printf("%s", WHITE);
 	}
-	if (menu.showCondition){
-		printf("\n\n%s*===========================================================*%s\n", GREEN, WHITE);
-		printf("%s\n", menu.condition);
-		printf("%s*===========================================================*%s\n", GREEN, WHITE);
-	}
-	else{
-		printf("\n\n%sJ%s - читать условие задачи\n", RED, WHITE);
-	}
 }
 
-void updateMenu(struct Menu *menu, struct Data *data){
+void updateMenu(struct Menu *menu){
     char ch = getch();
 	if (ch == '\033'){ // Ожидание спец. символов
 		getchar();  // Пропускаем символ "["
@@ -45,9 +37,8 @@ void updateMenu(struct Menu *menu, struct Data *data){
 			// ...
 		}
 	}
-	if (ch == 'j') menu->showCondition = 1 - menu->showCondition;
-	else if (ch == '\n'){
+	if (ch == '\n'){
 		clear_screen();
-		menu->taskStarters[menu->selectedIndex](data);
+		menu->taskStarters[menu->selectedIndex]();
 	}
 }

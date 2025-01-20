@@ -9,30 +9,12 @@
 
 struct Menu{
 	const char *title;
-	const char *condition;
 	const char **menuItems;
 	void (**taskStarters)();
-	int menuSize, selectedIndex, showCondition;	
-};
-
-// Структура только для 7-ой лабораторной
-struct Data{
-	int *array;
-	int **matrix;
-	char *str, *str2;
-	char **str_arr;
-
-	int array_len;
-	int rows, cols;
-	int str_len, str2_len;
-	int str_arr_len;
-
-	int n1, n2;
-	int flag1;
-	int run_menu;
+	int menuSize, selectedIndex;	
 };
 
 void clear_screen();
 void displayMenu(struct Menu menu);
-void updateMenu(struct Menu *menu, struct Data *data);
+void updateMenu(struct Menu *menu);
 
